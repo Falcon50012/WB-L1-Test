@@ -195,3 +195,57 @@
 //	time.Sleep(1 * time.Second)
 //	fmt.Println("Main goroutine exits")
 //}
+
+//package main
+//
+//import "fmt"
+//
+//func setBitToValue(num int64, pos uint, bitValue int64) int64 {
+//	mask := int64(1 << pos) // Создаем маску с единицей в позиции i
+//	mask = ^mask            // Инвертируем биты маски, чтобы установить i-й бит в 0
+//
+//	if bitValue == 1 {
+//		return num | mask // Устанавливаем i-й бит в 1 с помощью побитовой операции ИЛИ
+//	} else {
+//		return num & mask // Устанавливаем i-й бит в 0 с помощью побитовой операции И
+//	}
+//}
+//
+//func main() {
+//	var num int64 = -5   // Начальное число: 0101 в двоичном формате
+//	pos := uint(1)       // Устанавливаем 2-й бит (с нуля)
+//	bitValue := int64(0) // Устанавливаем бит в 0
+//
+//	result := setBitToValue(num, pos, bitValue)
+//	fmt.Printf("Число после установки i-го бита в %d: %d\n", bitValue, result) // Ожидаемый результат: 1 (0001 в двоичном формате)
+//}
+
+//package main
+//
+//import (
+//	"fmt"
+//	"strconv"
+//)
+//
+//func setBitToValue(num int64, pos uint, bitValue int64) int64 {
+//	mask := int64(1 << pos) // Создаем маску с единицей в позиции i
+//	b := strconv.FormatInt(mask, 2)
+//	fmt.Println(b)
+//	mask = ^mask // Инвертируем биты маски, чтобы установить i-й бит в 0
+//
+//	if bitValue == 1 {
+//		return num | mask // Устанавливаем i-й бит в 1 с помощью побитовой операции ИЛИ
+//	} else {
+//		return num & mask // Устанавливаем i-й бит в 0 с помощью побитовой операции И
+//	}
+//}
+//
+//func main() {
+//	var num int64 = 10   // Начальное число: 0101 в двоичном формате
+//	pos := uint(1)       // Устанавливаем 2-й бит (с нуля)
+//	bitValue := int64(0) // Устанавливаем бит в 0
+//
+//	result := setBitToValue(num, pos, bitValue)
+//	fmt.Printf("Число после установки i-го бита в %d: %d\n", bitValue, result) // Ожидаемый результат: 1 (0001 в двоичном формате)
+//}
+

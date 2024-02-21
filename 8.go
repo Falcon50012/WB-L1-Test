@@ -3,14 +3,12 @@ package main
 import (
 	"fmt"
 	"math"
-	"math/rand"
-	"time"
 )
 
 //Дана переменная int64. Разработать программу которая устанавливает i-й бит в 1 или 0.
 
 func main() {
-	var num uint64
+	var num int64 = -10
 	//fmt.Println(num)
 
 	bits := make([]int, 64)
@@ -39,11 +37,11 @@ func main() {
 	//}
 	//fmt.Printf("Степени двойки в 64-битном числе:\n %v\n", bitsValue)
 
-	rand.Seed(time.Now().UnixNano())
-	for i := len(bits) - 1; i >= 0; i-- {
-		bits[i] = rand.Intn(2)
-	}
-	fmt.Printf("Рандомное число в бинарном представлении:\n %v\n", bits)
+	//rand.Seed(time.Now().UnixNano())
+	//for i := len(bits) - 1; i >= 0; i-- {
+	//	bits[i] = rand.Intn(2)
+	//}
+	//fmt.Printf("Рандомное число в бинарном представлении:\n %v\n", bits)
 
 	var newNum float64
 
@@ -52,5 +50,5 @@ func main() {
 			newNum += math.Pow(2, float64(i))
 		}
 	}
-	fmt.Printf("Рандомное число в десятичном представлении:\n %v\n", uint64(newNum))
+	fmt.Printf("Рандомное число в десятичном представлении:\n %v\n", int64(newNum))
 }
