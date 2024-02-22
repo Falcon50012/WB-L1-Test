@@ -68,7 +68,7 @@ func main() {
 
 	// Создаем случайное число
 	//num := rand.Int63n(100) // Для примера, используем числа от 0 до 99
-	var num int64 = -1
+	var num int64 = -10
 	binNum := strconv.FormatInt(num, 2)
 	// Выводим исходное число
 	fmt.Printf("Исходное число: %d\n", num)
