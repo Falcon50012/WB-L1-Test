@@ -16,5 +16,5 @@ func main() {
 	slice = removeIndex(slice, 1)
 
 	// Выводим результат
-	fmt.Println(slice) // [1 3 4 5]
+	fmt.Println(slice)
 }

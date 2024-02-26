@@ -1,4 +1,5 @@
-//Разработать программу, которая в рантайме способна определить тип переменной: int, string, bool, channel из переменной типа interface{}.
+//Разработать программу,
+//которая в рантайме способна определить тип переменной: int, string, bool, channel из переменной типа interface{}.
 
 package main
 
@@ -13,7 +14,7 @@ func getType(x interface{}) string {
 	case bool:
 		return "bool"
 	case chan int:
-		return " channel of int"
+		return "channel of int"
 	default:
 		return "unknown"
 	}

@@ -32,7 +32,6 @@ func main() {
 			mu.Lock()
 			defer mu.Unlock()
 			fmt.Printf("Значение для ключа %d: %d\n", i, int64(m[i]))
-			//fmt.Printf("Горутина %v завершена\n", i)
 		}(i)
 	}
 

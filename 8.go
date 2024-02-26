@@ -1,54 +1,42 @@
+//Дана переменная int64. Разработать программу которая устанавливает i-й бит в 1 или 0.
+
 package main
 
 import (
 	"fmt"
-	"math"
+	"math/rand"
+	"strconv"
+	"time"
 )
 
-//Дана переменная int64. Разработать программу которая устанавливает i-й бит в 1 или 0.
+// setBitToValue устанавливает i-й бит в num в bitValue (0 или 1)
+func setBitToValue(num int64, pos uint, bitValue int64) int64 {
+	mask := int64(1 << pos) // Создаем маску с единицей в позиции i
+
+	if bitValue == 1 {
+		return num | mask // Устанавливаем i-й бит в 1 с помощью побитовой операции ИЛИ
+	}
+	return num &^ mask // Устанавливаем i-й бит в 0 с помощью побитовой операции AND с инвертированной маской
+}
 
 func main() {
-	var num int64 = -10
-	//fmt.Println(num)
+	rand.Seed(time.Now().UnixNano())
 
-	bits := make([]int, 64)
+	// Создаем случайное число
+	//num := rand.Int63n(100)
+	var num int64 = 10
+	binNum := strconv.FormatInt(num, 2)
+	// Выводим исходное число
+	fmt.Printf("Исходное число: %d\n", num)
+	fmt.Println("binNum:", binNum)
+	// Устанавливаем i-й бит в 1
+	i := uint(5)         // Пример: установить 5-й бит
+	bitValue := int64(1) // Установить в 1
+	num = setBitToValue(num, i, bitValue)
+	fmt.Printf("Число после установки %d-го бита в 1: %d\n", i, num)
 
-	//В этом коде мы используем побитовый сдвиг вправо (>>) и побитовое И (&) для получения каждого бита числа num.
-	//Затем мы записываем каждый бит в соответствующую ячейку массива.
-	//Мы сдвигаем число num на i битов вправо с помощью оператора >>.
-	//Это позволяет нам получить значение каждого бита по очереди.
-	//Затем мы применяем побитовое И с числом 1, чтобы оставить только младший бит, который и записываем в переменную bit.
-	for i := len(bits) - 1; i >= 0; i-- {
-		bit := (num >> uint(i)) & 1
-		//fmt.Print(bit)
-		bits[i] = int(bit)
-	}
-	//fmt.Println()
-	fmt.Printf("Исходное число в бинарном представлении:\n %v\n", bits)
-	//fmt.Println(bits[6])
-
-	//bitsValue := make([]uint64, 64)
-	//var bitValue float64
-	//
-	//for i := 0; i < len(bits); i++ {
-	//	bitValue = math.Pow(2, float64(i))
-	//	intBitValue := uint64(bitValue)
-	//	bitsValue[i] = intBitValue
-	//}
-	//fmt.Printf("Степени двойки в 64-битном числе:\n %v\n", bitsValue)
-
-	//rand.Seed(time.Now().UnixNano())
-	//for i := len(bits) - 1; i >= 0; i-- {
-	//	bits[i] = rand.Intn(2)
-	//}
-	//fmt.Printf("Рандомное число в бинарном представлении:\n %v\n", bits)
-
-	var newNum float64
-
-	for i := 0; i < len(bits); i++ {
-		if bits[i] == 1 {
-			newNum += math.Pow(2, float64(i))
-		}
-	}
-	fmt.Printf("Рандомное число в десятичном представлении:\n %v\n", int64(newNum))
+	// Устанавливаем i-й бит в 0
+	bitValue = 0 // Установить в 0
+	num = setBitToValue(num, i, bitValue)
+	fmt.Printf("Число после установки %d-го бита в 0: %d\n", i, num)
 }

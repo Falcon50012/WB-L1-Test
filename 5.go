@@ -1,3 +1,6 @@
+//Разработать программу, которая будет последовательно отправлять значения в канал,
+//а с другой стороны канала — читать. По истечению N секунд программа должна завершаться.
+
 package main
 
 import (
@@ -42,32 +45,3 @@ func main() {
 		}
 	}
 }
-
-//func main() {
-//	var countdown int
-//	fmt.Println("Введите значение таймера: ")
-//	fmt.Scan(&countdown)
-//
-//	if countdown <= 0 {
-//		fmt.Println("Завершение программы...")
-//		return
-//	}
-//
-//	duration := time.Duration(countdown) * time.Second
-//	timer := time.NewTimer(duration)
-//	ticker := time.NewTicker(1 * time.Second) // Тикер для периодической проверки времени
-//	startTime := time.Now()                   // Запоминаем время запуска таймера
-//
-//	fmt.Printf("Оставшееся время: %d сек\n", countdown)
-//
-//	for {
-//		select {
-//		case <-timer.C:
-//			fmt.Println("Время истекло! Программа завершена.")
-//			return
-//		case <-ticker.C:
-//			remaining := duration - time.Since(startTime)
-//			fmt.Printf("Оставшееся время: %d сек\n", int(remaining.Seconds()+1))
-//		}
-//	}
-//}

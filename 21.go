@@ -13,7 +13,7 @@ type PlayStationGamepad interface {
 type DualShock4 struct{}
 
 func (d *DualShock4) ConnectToPlayStation() string {
-	return "DualShock 4 connected to PlayStation"
+	return "DualShock 4 connected"
 }
 
 // Интерфейс ПК-геймпада
@@ -35,7 +35,8 @@ type PlayStationToPCAdapter struct {
 
 func (a *PlayStationToPCAdapter) ConnectToPC() string {
 	// Преобразуем вызов метода геймпада PlayStation в метод ПК-геймпада
-	return "Adapter: " + a.playStationGamepad.ConnectToPlayStation() + " via adapter to PC"
+	psConnectMsg := a.playStationGamepad.ConnectToPlayStation()
+	return fmt.Sprintf("Adapter: %s via adapter to PC", psConnectMsg)
 }
 
 func main() {
