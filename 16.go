@@ -20,7 +20,9 @@ func main() {
 	fmt.Println("Исходный массив", arr)
 
 	// Сортировка массива
-	sort.Ints(arr)
+	sort.Slice(arr, func(i, j int) bool {
+		return arr[i] < arr[j]
+	})
 
 	// Вывод отсортированного массива
 	fmt.Println("Отсортированный массив:", arr)

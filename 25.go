@@ -9,7 +9,7 @@ import (
 
 // Функция sleep, которая останавливает выполнение программы на заданное количество секунд
 func sleep(seconds int) {
-	time.Sleep(time.Duration(seconds) * time.Second)
+	<-time.After(time.Duration(seconds) * time.Second)
 }
 
 func main() {

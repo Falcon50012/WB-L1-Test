@@ -11,9 +11,7 @@ func main() {
 	fmt.Println("a =", a)
 	fmt.Println("b =", b)
 
-	a = a + b
-	b = a - b
-	a = a - b
+	a, b = b, a
 
 	fmt.Println("После обмена:")
 	fmt.Println("a =", a)

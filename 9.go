@@ -8,7 +8,7 @@ import (
 	"fmt"
 )
 
-// Этап 1: Генерация целых чисел в диапазоне от start до end и отправка их в канал
+// Генерация целых чисел в диапазоне от start до end и отправка их в канал
 func generateNumbers(start, end int, out chan<- int) {
 	defer close(out)
 	for i := start; i <= end; i++ {
@@ -16,15 +16,15 @@ func generateNumbers(start, end int, out chan<- int) {
 	}
 }
 
-// Этап 2: Возведение чисел в квадрат и отправка результатов в канал
-func squareNumbers(in <-chan int, out chan<- int) {
+// Умножение чисел и отправка результатов в канал
+func multiplyNumbers(in <-chan int, out chan<- int) {
 	defer close(out)
 	for num := range in {
-		out <- num * num
+		out <- num * 2
 	}
 }
 
-// Этап 3: Вывод чисел в консоль
+// Вывод чисел в консоль
 func printNumbers(in <-chan int) {
 	for num := range in {
 		fmt.Println(num)
@@ -34,14 +34,14 @@ func printNumbers(in <-chan int) {
 func main() {
 	// Создаем каналы для связи между этапами конвейера
 	numbers := make(chan int)
-	squares := make(chan int)
+	multiplies := make(chan int)
 
 	// Запускаем горутину для генерации чисел
 	go generateNumbers(1, 5, numbers)
 
-	// Запускаем горутину для возведения чисел в квадрат
-	go squareNumbers(numbers, squares)
+	// Запускаем горутину умножения чисел
+	go multiplyNumbers(numbers, multiplies)
 
 	// Выводим результаты
-	printNumbers(squares)
+	printNumbers(multiplies)
 }

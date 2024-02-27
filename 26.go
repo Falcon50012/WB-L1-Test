@@ -13,20 +13,17 @@ func isUnique(str string) bool {
 	// Преобразуем строку к нижнему регистру
 	str = strings.ToLower(str)
 
-	// Создаем карту для подсчета количества встреченных символов
-	charCount := make(map[rune]int)
+	// Создаем map
+	charMap := make(map[rune]bool)
 
 	// Проходим по каждому символу в строке
 	for _, char := range str {
-		// Если символ уже встречался, значит строка не уникальна
-		if charCount[char] > 0 {
+		if _, exist := charMap[char]; exist {
 			return false
 		}
-		// Увеличиваем счетчик встреченного символа
-		charCount[char]++
+		charMap[char] = true
 	}
 
-	// Если цикл завершился без прерывания, значит все символы уникальны
 	return true
 }
 

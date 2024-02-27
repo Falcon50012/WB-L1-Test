@@ -9,12 +9,10 @@ func removeIndex(slice []int, index int) []int {
 }
 
 func main() {
-	// Пример слайса
 	slice := []int{1, 2, 3, 4, 5}
 
-	// Удаляем второй элемент (индекс 1)
+	// Удаляем 2-й элемент
 	slice = removeIndex(slice, 1)
 
-	// Выводим результат
 	fmt.Println(slice)
 }

@@ -24,9 +24,10 @@ func reverseString(s string) string {
 }
 
 func main() {
+	fmt.Println("Введите строку:")
 	// Исходная строка
-	input := "главрыба"
-	fmt.Println("Исходная строка:", input)
+	var input string
+	fmt.Scan(&input)
 
 	// Переворачиваем строку
 	reversed := reverseString(input)

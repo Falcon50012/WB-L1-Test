@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Структура Human: Содержит поле Name типа string и поле Action типа *Action.
+// Структура Human: Содержит поле Name типа string и поле Action типа Action, являющееся вложенной структурой.
 type Human struct {
 	Name   string
 	Action *Action
@@ -11,8 +11,8 @@ type Human struct {
 // Метод Intro(): Метод структуры Human.
 func (h *Human) Intro() {
 	h.Name = "Thomas Anderson"
-	h.Action = &Action{Enter: "Outside the Matrix"}
-	fmt.Println(h.Name, *h.Action) // Разыменовываем указатель Action
+	h.Action = &Action{"Outside the Matrix"}
+	fmt.Println(h.Name, h.Action.Enter)
 }
 
 // Структура Action.
@@ -21,17 +21,14 @@ type Action struct {
 }
 
 // Метод структуры Action.
-func (a *Action) EnterTheMatrix() {
-	h := &Human{
-		Name:   "Neo",
-		Action: &Action{Enter: "Inside the Matrix"},
-	}
-	fmt.Println(h.Name, *h.Action)
+func (a *Action) EnterTheMatrix(h *Human) {
+	h.Name = "Neo"
+	a.Enter = "Inside the Matrix"
+	fmt.Println(h.Name, a.Enter)
 }
 
 func main() {
 	h := Human{}
 	h.Intro()
-	a := Action{}
-	a.EnterTheMatrix()
+	h.Action.EnterTheMatrix(&h)
 }
