@@ -28,18 +28,13 @@ func main() {
 		go writeToMap(i, math.Pow(2, float64(i)))
 	}
 
-	//Ожидание завершения всех горутин
-	for i := 0; i < workers; i++ {
-		wg.Add(1)
-		go func(i int) {
-			defer wg.Done()
-			mu.Lock()
-			defer mu.Unlock()
-			fmt.Printf("Значение для ключа %d: %d\n", i, int64(m[i]))
-		}(i)
+	wg.Wait()
+
+	for i, value := range m {
+		fmt.Printf("Значение для ключа %d: %d\n", i, int64(value))
 	}
 
-	wg.Wait()
 	fmt.Println(m)
+
 	fmt.Println("Главная горутина завершена")
 }
